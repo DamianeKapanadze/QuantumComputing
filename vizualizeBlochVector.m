@@ -12,9 +12,8 @@ ket1 = [0;1];
 
 %rho = ket2dm(ket1);
 plotBlochSphere
-ket = ket0;
-ket = rotateH(ket, pi);
 
+ket = rotateH(ket0, pi);
 
 
 %% Helper Functions
@@ -35,9 +34,10 @@ end
 function plotBlochVect (ket)
     lambda = ket2bv(ket);
     someBV = line ( [0 lambda(1)], [0 lambda(2)], [0 lambda(3)], ... 
-        'LineWidth', 2, 'Marker', 'o');
+        'LineWidth', 2, 'color', 'b', 'Marker', 'o');
 end
 
+%% Angular rotation functions
 %rotate over the y axis Ry matrix
 function r = rotateY(ket, angle) 
     for t = 0:(pi/24)*(angle/abs(angle)):angle
@@ -72,10 +72,13 @@ function r = rotateZ(ket, angle)
 end
 
 
-%rotate over the x=y axis RH matrix
+%rotate over the x=z axis RH matrix
 function r = rotateH(ket, angle) 
     for t = 0:(pi/24)*(angle/abs(angle)):angle
-        Rh = [cos(t/4) sin(t/4); sin(t/4) -cos(t/4)];
+
+        Rx = [cos(t/2)/2 i*sin(t/2); -i*sin(t/2) cos(t/2)/2];
+        Rz = [exp(i*t/2) 0; 0 exp(-i*t/2)];
+        Rh = (1/sqrt(2)) * (Rx + Rz);
         plotBlochVect( Rh * ket);
         %disp(t);
         pause(0.1);
