@@ -82,4 +82,3 @@ function r = rotateH(ket, angle)
     end
     r = (Rh * ket);
 end
-
