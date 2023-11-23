@@ -1,8 +1,10 @@
 % plotBlochSphere.m
 
 [Xs, Ys, Zs] = sphere (25);
-mySphere = surf( Xs, Ys, Zs); %Make a sphere
-axis equal %make more spherical
+%Make a sphere
+mySphere = surf( Xs, Ys, Zs); 
+%make more spherical
+axis equal 
 shading interp
 mySphere.FaceAlpha = 0.25;
 
