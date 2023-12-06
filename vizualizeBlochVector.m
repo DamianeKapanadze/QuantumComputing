@@ -45,8 +45,8 @@ function r = rotateY(ket, angle)
         Ry = [cos(t/2) sin(t/2); -sin(t/2) cos(t/2)];
         plotBlochVect( Ry * ket);
         %disp(t);
-        %pause(0.1);
-        exportgraphics(gcf,'Y_Gate.gif','Append',true);
+        pause(0.1);
+        %exportgraphics(gcf,'Y_Gate.gif','Append',true);
 
     end
     r = (Ry * ket);
@@ -58,8 +58,8 @@ function r = rotateX(ket, angle)
         Rx = [cos(t/2) i*sin(t/2); -i*sin(t/2) cos(t/2)];
         plotBlochVect( Rx * ket);
         %disp(t);
-        %pause(0.1);
-        exportgraphics(gcf,'X_Gate.gif','Append',true);
+        pause(0.1);
+        %exportgraphics(gcf,'X_Gate.gif','Append',true);
 
     end
     r = (Rx * ket);
